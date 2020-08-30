@@ -1,0 +1,87 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="XSStrike源码分析-下"><meta name="keywords" content="XSS,Python,扫描器"><meta name="author" content="Sys71m"><meta name="copyright" content="Sys71m"><title>XSStrike源码分析-下 | sys71m</title><link rel="shortcut icon" href="/lufei.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><link rel="alternate" href="/atom.xml" title="sys71m" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页解析"><span class="toc-number">2.</span> <span class="toc-text">网页解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤检测"><span class="toc-number">3.</span> <span class="toc-text">过滤检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Payload生成"><span class="toc-number">4.</span> <span class="toc-text">Payload生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS验证"><span class="toc-number">5.</span> <span class="toc-text">XSS验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://raw.githubusercontent.com/ttonys/gitPic/master/lufei.jpg"></div><div class="author-info__name text-center">Sys71m</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/ttonys">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">32</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">48</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">18</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/ttonys/MarkDownPic/master/test33.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">sys71m</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">XSStrike源码分析-下</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-08-31</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/代码审计/">代码审计</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2020/08/31/XSStrike源码分析-下/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2020/08/31/XSStrike源码分析-下/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1.3k</span><span class="post-meta__separator">|</span><span>Reading time: 3 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>XSStrike是一款优秀的开源xss漏洞扫描器。</p>
+<a id="more"></a>  
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>scan扫描作为XSStrike扫描器的核心部分，具有dom检测、waf检测、参数发现等功能，在上篇已经分析过这些功能的实现方法。接下来分析scan扫描的处理流程，分为如下部分：</p>
+<ul>
+<li>网页解析</li>
+<li>过滤检测</li>
+<li>Payload生成</li>
+<li>XSS验证</li>
+</ul>
+<h2 id="网页解析"><a href="#网页解析" class="headerlink" title="网页解析"></a>网页解析</h2><p>在开始之前会根据命令配置进行dom检测、参数发现和waf检测，在上篇已经做了分析，如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830214102745.png" alt="image-20200830214102745"></p>
+<p>接下来扫描器会进行参数替换，并将相应报文传入<code>htmlParser</code>分析，如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830214326768.png" alt="image-20200830214326768"></p>
+<p>接下来分析下<code>htmlParser</code>函数的实现方式，代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830215513853.png" alt="image-20200830215513853"></p>
+<p>首先会在响应报文中统计xss标记，接下来会对响应报文进行处理，去除注释标记，然后对所有<code>&lt;script&gt;</code>进行遍历，用于发现是否出现的<code>script</code>标签之中。</p>
+<p>如果发现存在的话，<code>position_and_context</code>变量会记录出现位置以及出现的位置，此处则为<code>script</code>标签之中，<code>environment_details</code>则会记录闭合方式。</p>
+<p>通过<code>replace</code>函数为发现的xss标记做替换为空处理，防止下次重复处理。</p>
+<p>如果未在<code>script</code>标签中发现xss标记，则会进行下一阶段的处理，用于检测是否在标签之中出现，如<code>a</code>、<code>div</code>等标签，代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830221130030.png" alt="image-20200830221130030"></p>
+<p>首先处理之前会先进行判断，用于判断是否所有xss已经被处理，如果已经处理则不会进入循环，提高运行效率。</p>
+<p>同样的也会记录出现位置，记录是在哪个标签中出现的，以及闭合方式、name、value值。</p>
+<p>当标签也没有检测到xss标记之后，会进行全局的查找，代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830222433071.png" alt="image-20200830222433071"></p>
+<p>当在html页面发现时，会做一个<code>html</code>标记，如果还没有发现，有可能出现在注释之中，加下来会对注释进行检测：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830222628414.png" alt="image-20200830222628414"></p>
+<p>检测的为原始报文<code>response</code>，检测到之后会做一个<code>commnet</code>标记。</p>
+<p>当分析完毕之后，会将分析结果存入<code>database</code>字典，然后返回，如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830223010591.png" alt="image-20200830223010591"></p>
+<p>最后，还有一个<code>bad_tag</code>检测，如果检测到标签为上面正则中的任何一种形式之后，会做一个<code>badTag</code>标记。</p>
+<h2 id="过滤检测"><a href="#过滤检测" class="headerlink" title="过滤检测"></a>过滤检测</h2><p>经过<code>htmlParser</code>函数解析之后，通过<code>occurences</code>变量传入<code>filterChecker</code>函数，如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830223543487.png" alt="image-20200830223543487"></p>
+<p><code>filterChecker</code>函数处理逻辑如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830224218882.png" alt="image-20200830224218882"></p>
+<p>首先定义两个初始探测变量，<code>&lt;</code>和<code>&gt;</code>。</p>
+<p>如果xss标记出现在注释中，则会加入<code>--&gt;</code>进行注释闭合测试。</p>
+<p>如果出现在<code>script</code>中，会将闭合标记和混淆的<code>script</code>标签加入。</p>
+<p>如果出现在属性标签之中，为<code>srcdoc</code>标签的话则会加入实体编码，因为<code>srcdoc</code>支持对实体编码的解释，然后加如闭合标记。</p>
+<p>接下来调用<code>checker</code>函数进行检测，代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830224932966.png" alt="image-20200830224932966"></p>
+<p><code>checkString</code>中会加入测试<code>payload</code>，然后发送给服务器，通过响应报文查找<code>st4r7s</code>出现的位置，根据<code>st4r7s</code>的位置截取正常测试payload的长度，通过<code>fuzz.partal_ration</code>函数对响应报文和原始paylaod进行计算。</p>
+<p><code>fuzz.partal_ration</code>函数是一种模糊匹配算法，用于计算相似度，大致如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830230737505.png" alt="image-20200830230737505"></p>
+<p>下面还会对原始的<code>position</code>位置进行一次运算，或者发现特殊字符并未被过滤之后权重配置为90。</p>
+<p>取两次计算最大值返回，最终返回一个影响字典。</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830231222109.png" alt="image-20200830231222109"></p>
+<h2 id="Payload生成"><a href="#Payload生成" class="headerlink" title="Payload生成"></a>Payload生成</h2><p>Payload生成的主要函数为<code>generator</code>，代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830232919069.png" alt="image-20200830232919069"></p>
+<p>可见定义了11个<code>set</code>集合，用于处理可能存在的11中情况，更加智能的生成payload，提高利用效率。</p>
+<p>首先当上下文处于html页面之中时，会尝试获取<code>&lt;</code>和<code>&gt;</code>的影响值，存在<code>badTag</code>的话则会读取出来。如果标签结束符的影响值为100的话，也就是说后台对<code>&gt;</code>未做任何处理，测绘将<code>&gt;</code>加入的<code>ends</code>变量中，然后调用<code>genGen</code>函数生成<code>Payload</code>。</p>
+<p>跟进下<code>genGen</code>函数：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830234709828.png" alt="image-20200830234709828"></p>
+<p>代码会for循环自定配置或者通过之前分析生成的字符，通过字符串拼接生成对应的<code>payload</code>。</p>
+<p>上面代码中的变量都在<code>config.py</code>文件中有所配置，部分如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830234930000.png" alt="image-20200830234930000"></p>
+<p>当xss标记处于属性之中时，代码也会根据具体的属性生成对应的<code>payload</code>，和手动测试做标签闭合的方式如下，参考如下代码：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200830235321687.png" alt="image-20200830235321687"></p>
+<p>检测的条件太多了，就不一一分析了，如果出现了新的绕过方式或者新的标签属性，可以在此处进行配置，也可以进行全局配置，但是会增加检测的负荷。</p>
+<h2 id="XSS验证"><a href="#XSS验证" class="headerlink" title="XSS验证"></a>XSS验证</h2><p>验证逻辑如下：</p>
+<p><img src="https://raw.githubusercontent.com/ttonys/MarkDownPic/master/XSStrike/image-20200831000139210.png" alt="image-20200831000139210"></p>
+<p>遍历生成的<code>payload</code>，再做一次影响检测，当完全匹配（100）或大于等于95是表示利用成功。</p>
+<p>如果小于95的话，还会做一次比较，<code>minEfficiency</code>为个人设置的阀值，在<code>config.py</code>中配置，可以根据实际情况来配置。当大于最小阀值时，也会进行报告。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>orz</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Sys71m</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://www.sys71m.top/2020/08/31/XSStrike源码分析-下/">https://www.sys71m.top/2020/08/31/XSStrike源码分析-下/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/XSS/">XSS</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/扫描器/">扫描器</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/08/30/XSStrike源码分析-上/"><span>XSStrike源码分析-上</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://www.sys71m.top/2020/08/31/XSStrike源码分析-下/';
+  this.page.identifier = '2020/08/31/XSStrike源码分析-下/';
+  this.page.title = 'XSStrike源码分析-下';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'sys71m' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://sys71m.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/ttonys/MarkDownPic/master/test33.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2020 By Sys71m</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
