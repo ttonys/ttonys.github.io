@@ -1,0 +1,650 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Web Application Penetration Testing Checklist"><meta name="keywords" content="渗透"><meta name="author" content="Sys71m"><meta name="copyright" content="Sys71m"><title>Web Application Penetration Testing Checklist | sys71m</title><link rel="shortcut icon" href="/lufei.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><link rel="alternate" href="/atom.xml" title="sys71m" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-Application-Penetration-Testing-Checklist"><span class="toc-number">1.</span> <span class="toc-text">Web Application Penetration Testing Checklist</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://raw.githubusercontent.com/ttonys/gitPic/master/lufei.jpg"></div><div class="author-info__name text-center">Sys71m</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/ttonys">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">36</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">53</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">21</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/ttonys/MarkDownPic/master/test33.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">sys71m</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Web Application Penetration Testing Checklist</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-10-30</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/渗透测试/">渗透测试</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2022/10/30/Web-Application-Penetration-Testing-Checklist/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2022/10/30/Web-Application-Penetration-Testing-Checklist/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">4.3k</span><span class="post-meta__separator">|</span><span>Reading time: 26 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>SecCheckList</p>
+<a id="more"></a>  
+<h1 id="Web-Application-Penetration-Testing-Checklist"><a href="#Web-Application-Penetration-Testing-Checklist" class="headerlink" title="Web Application Penetration Testing Checklist"></a>Web Application Penetration Testing Checklist</h1><ul>
+<li><p><strong>Recon Phase</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Identify web server, technologies and database</li>
+<li style="list-style: none"><input type="checkbox"> Subsidiary and Acquisition Enumeration</li>
+<li style="list-style: none"><input type="checkbox"> Reverse Lookup</li>
+<li style="list-style: none"><input type="checkbox"> ASN &amp; IP Space Enumeration and Service Enumeration</li>
+<li style="list-style: none"><input type="checkbox"> Google Dorking</li>
+<li style="list-style: none"><input type="checkbox"> Github Recon</li>
+<li style="list-style: none"><input type="checkbox"> Directory Enumeration</li>
+<li style="list-style: none"><input type="checkbox"> IP Range Enumeration</li>
+<li style="list-style: none"><input type="checkbox"> JS Files Analysis</li>
+<li style="list-style: none"><input type="checkbox"> Subdomain Enumeration and Bruteforcing</li>
+<li style="list-style: none"><input type="checkbox"> Subdomain Takeover</li>
+<li style="list-style: none"><input type="checkbox"> Parameter Fuzzing</li>
+<li style="list-style: none"><input type="checkbox"> Port Scanning</li>
+<li style="list-style: none"><input type="checkbox"> Template-Based Scanning(Nuclei)</li>
+<li style="list-style: none"><input type="checkbox"> Wayback History</li>
+<li style="list-style: none"><input type="checkbox"> Broken Link Hijacking</li>
+<li style="list-style: none"><input type="checkbox"> Internet Search Engine Discovery</li>
+<li style="list-style: none"><input type="checkbox"> Misconfigured Cloud Storage</li>
+</ul>
+</li>
+<li><p><strong>Registration Feature Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Check for duplicate registration/Overwrite existing user</li>
+<li style="list-style: none"><input type="checkbox"> Check for weak password policy</li>
+<li style="list-style: none"><input type="checkbox"> Check for reuse existing usernames</li>
+<li style="list-style: none"><input type="checkbox"> Check for insufficient email verification process</li>
+<li style="list-style: none"><input type="checkbox"> Weak registration implementation-Allows disposable email addresses</li>
+<li style="list-style: none"><input type="checkbox"> Weak registration implementation-Over HTTP</li>
+<li style="list-style: none"><input type="checkbox"> Overwrite default web application pages by specially crafted username registrations. =&gt; After registration, does your profile link appears something as <a href="http://www.chintan.com/chintan" target="_blank" rel="noopener">www.tushar.com/</a>tushar?</li>
+</ul>
+<p>a. If so, enumerate default folders of web application such as /images, /contact, /portfolio</p>
+<p>b. Do a registration using the username such as images, contact, portfolio</p>
+<p>c. Check if those default folders have been overwritten by your profile link or not.”</p>
+</li>
+<li><p><strong>Session Management Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Identify actual session cookie out of bulk cookies in the application</li>
+<li style="list-style: none"><input type="checkbox"> Decode cookies using some standard decoding algorithms such as Base64, hex, URL, etc</li>
+<li style="list-style: none"><input type="checkbox"> Modify cookie.session token value by 1 bit/byte. Then resubmit and do the same for all tokens. Reduce the amount of work you need to perform in order to identify which part of the token is actually being used and which is not</li>
+<li style="list-style: none"><input type="checkbox"> If self-registration is available and you can choose your username, log in with a series of similar usernames containing small variations between them, such as A, AA, AAA, AAAA, AAAB, AAAC, AABA, and so on. If another user-specific data is submitted at login or stored in user profiles (such as an email address)</li>
+<li style="list-style: none"><input type="checkbox"> Check for session cookies and cookie expiration date/time</li>
+<li style="list-style: none"><input type="checkbox"> Identify cookie domain scope</li>
+<li style="list-style: none"><input type="checkbox"> Check for HttpOnly flag in cookie</li>
+<li style="list-style: none"><input type="checkbox"> Check for Secure flag in cookie if the application is over SSL</li>
+<li style="list-style: none"><input type="checkbox"> Check for session fixation i.e. value of session cookie before and after authentication</li>
+<li style="list-style: none"><input type="checkbox"> Replay the session cookie from a different effective IP address or system to check whether the server maintains the state of the machine or not</li>
+<li style="list-style: none"><input type="checkbox"> Check for concurrent login through different machine/IP</li>
+<li style="list-style: none"><input type="checkbox"> Check if any user pertaining information is stored in cookie value or not If yes, tamper it with other user’s data</li>
+<li style="list-style: none"><input type="checkbox"> Failure to Invalidate Session on (Email Change,2FA Activation)</li>
+</ul>
+</li>
+<li><p><strong>Authentication Testing</strong></p>
+<ul>
+<li><p>[ ] Username enumeration</p>
+</li>
+<li><p>[ ] Bypass authentication using various SQL Injections on username and password field</p>
+</li>
+<li><p>[ ] Lack of password confirmation on</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Change email address</li>
+<li style="list-style: none"><input type="checkbox"> Change password</li>
+<li style="list-style: none"><input type="checkbox"> Manage 2FA</li>
+</ul>
+</li>
+<li><p>[ ] Is it possible to use resources without authentication? Access violation</p>
+</li>
+<li><p>[ ] Check if user credentials are transmitted over SSL or not</p>
+</li>
+<li><p>[ ] Weak login function HTTP and HTTPS both are available</p>
+</li>
+<li><p>[ ] Test user account lockout mechanism on brute force attack</p>
+<p>Variation : If server blocks instant user requests, then try with time throttle option from intruder and repeat the process again.</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Bypass rate limiting by tampering user agent to Mobile User agent</li>
+<li style="list-style: none"><input type="checkbox"> Bypass rate limiting by tampering user agent to Anonymous user agent</li>
+<li style="list-style: none"><input type="checkbox"> Bypass rate liniting by using null byte</li>
+</ul>
+</li>
+<li><p>[ ] Create a password wordlist using cewl command</p>
+</li>
+<li><p>[ ] Test Oauth login functionality</p>
+<ul>
+<li><p>OAuth Roles</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Resource Owner → User</li>
+<li style="list-style: none"><input type="checkbox"> Resource Server → Twitter</li>
+<li style="list-style: none"><input type="checkbox"> Client Application → <a href="http://twitterdeck.com/" target="_blank" rel="noopener">Twitterdeck.com</a></li>
+<li style="list-style: none"><input type="checkbox"> Authorization Server → Twitter</li>
+<li style="list-style: none"><input type="checkbox"> client_id → Twitterdeck ID (This is a public, non-secret unique identifier_</li>
+<li style="list-style: none"><input type="checkbox"> client_secret → Secret Token known to the Twitter and Twitterdeck to generate access_tokens</li>
+<li style="list-style: none"><input type="checkbox"> response_type → Defines the token type e.g (code, token, etc.)</li>
+<li style="list-style: none"><input type="checkbox"> scope → The requested level of access Twitterdeck wants</li>
+<li style="list-style: none"><input type="checkbox"> redirect_uri → The URL user is redirected to after the authorization is complete</li>
+<li style="list-style: none"><input type="checkbox"> state → Main CSRF protection in OAuth can persist data between the user being directed to the authorization server and back again</li>
+<li style="list-style: none"><input type="checkbox"> grant_type → Defines the grant_type and the returned token type</li>
+<li style="list-style: none"><input type="checkbox"> code → The authorization code twitter generated, will be like ?code= , the code is used with client_id and client_secret to fetch an access_token</li>
+<li style="list-style: none"><input type="checkbox"> access_token → The token twitterdeck uses to make API requests on behalf of the user</li>
+<li style="list-style: none"><input type="checkbox"> refresh_token → Allows an application to obtain a new access_token without prompting the user</li>
+</ul>
+</li>
+<li><p>Code Flaws</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Re-Using the code</li>
+<li style="list-style: none"><input type="checkbox"> Code Predict/Bruteforce and Rate-limit</li>
+<li style="list-style: none"><input type="checkbox"> Is the code for application X valid for application Y?</li>
+</ul>
+</li>
+<li><p>Redirect_uri Flaws</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> URL isn’t validated at all: ?redirect_uri=<a href="https://attacker.com" target="_blank" rel="noopener">https://attacker.com</a></li>
+<li style="list-style: none"><input type="checkbox"> Subdomains allowed (Subdomain Takeover or Open redirect on those subdomains): ?redirect_uri=<a href="https://sub.twitterdeck.com" target="_blank" rel="noopener">https://sub.twitterdeck.com</a></li>
+<li style="list-style: none"><input type="checkbox"> Host is validated, path isn’t Chain open redirect): ?redirect_uri=<a href="https://twitterdeck.com/callback?redirectUrl=https://evil.com" target="_blank" rel="noopener">https://twitterdeck.com/callback?redirectUrl=https://evil.com</a></li>
+<li style="list-style: none"><input type="checkbox"> Host is validated, path isn’t (Referer leakages): Include external content on HTML page and leak code via Referer</li>
+<li style="list-style: none"><input type="checkbox"> Weak Regexes</li>
+<li style="list-style: none"><input type="checkbox"> Bruteforcing the URL encoded chars after host: redirect_uri=<a href="https://twitterdeck.com§FUZZ§" target="_blank" rel="noopener">https://twitterdeck.com§FUZZ§</a></li>
+<li style="list-style: none"><input type="checkbox"> Bruteforcing the keywords whitelist after host (or on any whitelist open redirect filter): ?redirect_uri=https://§FUZZ§.com</li>
+<li style="list-style: none"><input type="checkbox"> URI validation in place: use typical open redirect payloads</li>
+</ul>
+</li>
+<li><p>State Flaws</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Missing State parameter? (CSRF)</li>
+<li style="list-style: none"><input type="checkbox"> Predictable State parameter?</li>
+<li style="list-style: none"><input type="checkbox"> Is State parameter being verified?</li>
+</ul>
+</li>
+<li><p>Misc</p>
+<ul>
+<li><p>[ ] Is client_secret validated?</p>
+</li>
+<li><p>[ ] Pre ATO using facebook phone-number signup</p>
+</li>
+<li><p>[ ] No email validation Pre ATO</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>[ ] Test 2FA Misconfiguration</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Response Manipulation</li>
+<li style="list-style: none"><input type="checkbox"> Status Code</li>
+<li style="list-style: none"><input type="checkbox"> Manipulation</li>
+<li style="list-style: none"><input type="checkbox"> 2FA Code Leakage in Response</li>
+<li style="list-style: none"><input type="checkbox"> 2FA Code Reusability</li>
+<li style="list-style: none"><input type="checkbox"> Lack of Brute-Force Protection</li>
+<li style="list-style: none"><input type="checkbox"> Missing 2FA Code Integrity Validation</li>
+<li style="list-style: none"><input type="checkbox"> With null or 000000</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>My Account (Post Login) Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Find parameter which uses active account user id. Try to tamper it in order to change the details of the other accounts</li>
+<li style="list-style: none"><input type="checkbox"> Create a list of features that are pertaining to a user account only. Change Email Change Password -Change account details (Name, Number, Address, etc.) Try CSRF</li>
+<li style="list-style: none"><input type="checkbox"> Post login change email id and update with any existing email id. Check if its getting validated on server side or not. Does the application send any new email confirmation link to a new user or not? What if a user does not confirm the link in some time frame?</li>
+<li style="list-style: none"><input type="checkbox"> Open profile picture in a new tab and check the URL. Find email id/user id info. EXIF Geolocation Data Not Stripped From Uploaded Images.</li>
+<li style="list-style: none"><input type="checkbox"> Check account deletion option if application provides it and confirm that via forgot password feature</li>
+<li style="list-style: none"><input type="checkbox"> Change email id, account id, user id parameter and try to brute force other user’s password</li>
+<li style="list-style: none"><input type="checkbox"> Check whether application re authenticates for performing sensitive operation for post authentication features</li>
+</ul>
+</li>
+<li><p><strong>Forgot Password Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Failure to invalidate session on Logout and Password reset</li>
+<li style="list-style: none"><input type="checkbox"> Check if forget password reset link/code uniqueness</li>
+<li style="list-style: none"><input type="checkbox"> Check if reset link does get expire or not if its not used by the user for certain amount of time</li>
+<li style="list-style: none"><input type="checkbox"> Find user account identification parameter and tamper Id or parameter value to change other user’s password</li>
+<li style="list-style: none"><input type="checkbox"> Check for weak password policy</li>
+<li style="list-style: none"><input type="checkbox"> Weak password reset implementation Token is not invalidated after use</li>
+<li style="list-style: none"><input type="checkbox"> If reset link has another param such as date and time, then. Change date and time value in order to make active &amp; valid reset link</li>
+<li style="list-style: none"><input type="checkbox"> Check if security questions are asked? How many guesses allowed? –&gt; Lockout policy maintained or not?</li>
+<li style="list-style: none"><input type="checkbox"> Add only spaces in new password and confirmed password. Then Hit enter and see the result</li>
+<li style="list-style: none"><input type="checkbox"> Does it display old password on the same page after completion of forget password formality?</li>
+<li style="list-style: none"><input type="checkbox"> Ask for two password reset link and use the older one from user’s email</li>
+<li style="list-style: none"><input type="checkbox"> Check if active session gets destroyed upon changing the password or not?</li>
+<li style="list-style: none"><input type="checkbox"> Weak password reset implementation Password reset token sent over HTTP</li>
+<li style="list-style: none"><input type="checkbox"> Send continuous forget password requests so that it may send sequential tokens</li>
+<li style="list-style: none"><input type="checkbox"> Adding the header <code>X-Forwarded-Host</code> in the password reset request to change the Host </li>
+</ul>
+</li>
+<li><p><strong>Contact Us Form Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Is CAPTCHA implemented on contact us form in order to restrict email flooding attacks?</li>
+<li style="list-style: none"><input type="checkbox"> Does it allow to upload file on the server?</li>
+<li style="list-style: none"><input type="checkbox"> Blind XSS</li>
+</ul>
+</li>
+<li><p><strong>Product Purchase Testing</strong></p>
+<ul>
+<li>Buy Now<ul>
+<li style="list-style: none"><input type="checkbox"> Tamper product ID to purchase other high valued product with low prize</li>
+<li style="list-style: none"><input type="checkbox"> Tamper product data in order to increase the number of product with the same prize</li>
+</ul>
+</li>
+<li>Gift/Voucher<ul>
+<li style="list-style: none"><input type="checkbox"> Tamper gift/voucher count in the request (if any) to increase/decrease the number of vouchers/gifts to be used</li>
+<li style="list-style: none"><input type="checkbox"> Tamper gift/voucher value to increase/decrease the value of the voucher in terms of money. (e.g. $100 is given as a voucher, tamper value to increase, decrease money)</li>
+<li style="list-style: none"><input type="checkbox"> Reuse gift/voucher by using old gift values in parameter tampering</li>
+<li style="list-style: none"><input type="checkbox"> Check the uniqueness of gift/voucher parameter and try guessing other gift/voucher code</li>
+<li style="list-style: none"><input type="checkbox"> Use parameter pollution technique to add the same voucher twice by adding same parameter name and value again with &amp; in the BurpSuite request</li>
+</ul>
+</li>
+<li>Add/Delete Product from Cart<ul>
+<li style="list-style: none"><input type="checkbox"> Tamper user id to delete products from other user’s cart</li>
+<li style="list-style: none"><input type="checkbox"> Tamper cart id to add/delete products from other user’s cart</li>
+<li style="list-style: none"><input type="checkbox"> Identify cart id/user id for cart feature to view the added items from other user’s account</li>
+</ul>
+</li>
+<li>Address<ul>
+<li style="list-style: none"><input type="checkbox"> Tamper BurpSuite request to change other user’s shipping address to yours</li>
+<li style="list-style: none"><input type="checkbox"> Try stored XSS by adding XSS vector on shipping address</li>
+<li style="list-style: none"><input type="checkbox"> Use parameter pollution technique to add two shipping address instead of one trying to manipulate application to send same item on two shipping address</li>
+</ul>
+</li>
+<li>Place Order<ul>
+<li style="list-style: none"><input type="checkbox"> Tamper payment options parameter to change the payment method. E.g. Consider some items cannot be ordered for cash on delivery but tampering request parameters from debit/credit/PayPal/net banking option to cash on delivery may allow you to place order for that particular item</li>
+<li style="list-style: none"><input type="checkbox"> Tamper the amount value for payment manipulation in each main and sub requests and responses</li>
+<li style="list-style: none"><input type="checkbox"> Check if CVV is going in cleartext or not</li>
+<li style="list-style: none"><input type="checkbox"> Check if the application itself processes your card details and then performs a transaction or it calls any third-party payment processing company to perform a transaction</li>
+</ul>
+</li>
+<li>Track Order<ul>
+<li style="list-style: none"><input type="checkbox"> Track other user’s order by guessing order tracking number</li>
+<li style="list-style: none"><input type="checkbox"> Brute force tracking number prefix or suffix to track mass orders for other users</li>
+</ul>
+</li>
+<li>Wish list page testing<ul>
+<li style="list-style: none"><input type="checkbox"> Check if a user A can add/remote products in Wishlist of other user B’s account</li>
+<li style="list-style: none"><input type="checkbox"> Check if a user A can add products into user B’s cart from his/her (user A’s) Wishlist section.</li>
+</ul>
+</li>
+<li>Post product purchase testing<ul>
+<li style="list-style: none"><input type="checkbox"> Check if user A can cancel orders for user B’s purchase</li>
+<li style="list-style: none"><input type="checkbox"> Check if user A can view/check orders already placed by user B</li>
+<li style="list-style: none"><input type="checkbox"> Check if user A can modify the shipping address of placed order by user B</li>
+</ul>
+</li>
+<li>Out of band testing<ul>
+<li style="list-style: none"><input type="checkbox"> Can user order product which is out of stock?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Banking Application Testing</strong></p>
+<ul>
+<li>Billing Activity<ul>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the account statement for user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the transaction report for user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the summary report for user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can register for monthly/weekly account statement via email behalf of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can update the existing email id of user ‘B’ in order to retrieve monthly/weekly account summary</li>
+</ul>
+</li>
+<li>Deposit/Loan/Linked/External Account Checking<ul>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the deposit account summary of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check for account balance tampering for Deposit accounts</li>
+</ul>
+</li>
+<li>Tax Deduction Inquiry Testing<ul>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ with it’s customer id ‘a’ can see the tax deduction details of user ‘B’ by tampering his/her customer id ‘b’</li>
+<li style="list-style: none"><input type="checkbox"> Check parameter tampering for increasing and decreasing interest rate, interest amount, and tax refund</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can download the TDS details of user ‘B’</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can request for the cheque book behalf of user ‘B’.</li>
+<li>Fixed Deposit Account Testing<ul>
+<li style="list-style: none"><input type="checkbox"> Check if is it possible for user ‘A’ to open FD account behalf of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check if Can user open FD account with the more amount than the current account balance</li>
+</ul>
+</li>
+<li>Stopping Payment on basis of cheque/date range<ul>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ stop the payment of user ‘B’ via cheque number</li>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ stop the payment on basis of date range for user ‘B’</li>
+</ul>
+</li>
+<li>Status Enquiry Testing<ul>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ view the status enquiry of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ modify the status enquiry of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ post and enquiry behalf of user ‘B’ from his own account</li>
+</ul>
+</li>
+<li>Fund transfer testing<ul>
+<li style="list-style: none"><input type="checkbox"> Is it possible to transfer funds to user ‘C’ instead of user ‘B’ from the user ‘A’ which was intended to transfer from user ‘A’ to user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Can fund transfer amount be manipulated?</li>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ modify the payee list of user ‘B’ by parameter manipulation using his/her own account</li>
+<li style="list-style: none"><input type="checkbox"> Is it possible to add payee without any proper validation in user ‘A’ ‘s own account or to user ‘B’ ‘s account</li>
+</ul>
+</li>
+<li>Schedule transfer testing<ul>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ view the schedule transfer of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Can user ‘A’ change the details of schedule transfer for user ‘B’</li>
+</ul>
+</li>
+<li>Testing of fund transfer via NEFT<ul>
+<li style="list-style: none"><input type="checkbox"> Amount manipulation via NEFT transfer</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the NEFT transfer details of user ‘B’</li>
+</ul>
+</li>
+<li>Testing for Bill Payment<ul>
+<li style="list-style: none"><input type="checkbox"> Check if user can register payee without any checker approval</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the pending payments of user ‘B’</li>
+<li style="list-style: none"><input type="checkbox"> Check if user ‘A’ can view the payment made details of user ‘B’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Open Redirection Testing</strong></p>
+<ul>
+<li><p>Common injection parameters</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/&#123;payload&#125;</span><br><span class="line">?next=&#123;payload&#125;</span><br><span class="line">?url=&#123;payload&#125;</span><br><span class="line">?target=&#123;payload&#125;</span><br><span class="line">?rurl=&#123;payload&#125;</span><br><span class="line">?dest=&#123;payload&#125;</span><br><span class="line">?destination=&#123;payload&#125;</span><br><span class="line">?redir=&#123;payload&#125;</span><br><span class="line">?redirect_uri=&#123;payload&#125;</span><br><span class="line">?redirect_url=&#123;payload&#125;</span><br><span class="line">?redirect=&#123;payload&#125;</span><br><span class="line">/redirect/&#123;payload&#125;</span><br><span class="line">/cgi-bin/redirect.cgi?&#123;payload&#125;</span><br><span class="line">/out/&#123;payload&#125;</span><br><span class="line">/out?&#123;payload&#125;</span><br><span class="line">?view=&#123;payload&#125;</span><br><span class="line">/login?to=&#123;payload&#125;</span><br><span class="line">?image_url=&#123;payload&#125;</span><br><span class="line">?go=&#123;payload&#125;</span><br><span class="line">?return=&#123;payload&#125;</span><br><span class="line">?returnTo=&#123;payload&#125;</span><br><span class="line">?return_to=&#123;payload&#125;</span><br><span class="line">?checkout_url=&#123;payload&#125;</span><br><span class="line">?continue=&#123;payload&#125;</span><br><span class="line">?return_path=&#123;payload&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[ ] Use burp ‘find’ option in order to find parameters such as URL, red, redirect, redir, origin, redirect_uri, target etc</p>
+</li>
+<li><p>[ ] Check the value of these parameter which may contain a URL</p>
+</li>
+<li><p>[ ] Change the URL value to <a href="http://www.chintan.com/" target="_blank" rel="noopener">www.tushar.com</a> and check if gets redirected or not</p>
+</li>
+<li><p>[ ] Try Single Slash and url encoding</p>
+</li>
+<li><p>[ ] Using a whitelisted domain or keyword</p>
+</li>
+<li><p>[ ] Using // to bypass http blacklisted keyword</p>
+</li>
+<li><p>[ ] Using https: to bypass // blacklisted keyword</p>
+</li>
+<li><p>[ ] Using \ to bypass // blacklisted keyword</p>
+</li>
+<li><p>[ ] Using \/\/ to bypass // blacklisted keyword</p>
+</li>
+<li><p>[ ] Using null byte %00 to bypass blacklist filter</p>
+</li>
+<li><p>[ ] Using ° symbol to bypass</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Host Header Injection</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Supply an arbitrary Host header</li>
+<li style="list-style: none"><input type="checkbox"> Check for flawed validation</li>
+<li>Send ambiguous requests<ul>
+<li style="list-style: none"><input type="checkbox"> Inject duplicate Host headers</li>
+<li style="list-style: none"><input type="checkbox"> Supply an absolute URL</li>
+<li style="list-style: none"><input type="checkbox"> Add line wrapping</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> Inject host override headers</li>
+</ul>
+</li>
+<li><p><strong>SQL Injection Testing</strong></p>
+<ul>
+<li><p>Entry point detection</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Simple characters</li>
+<li style="list-style: none"><input type="checkbox"> Multiple encoding</li>
+<li style="list-style: none"><input type="checkbox"> Merging characters</li>
+<li style="list-style: none"><input type="checkbox"> Logic Testing</li>
+<li style="list-style: none"><input type="checkbox"> Weird characters</li>
+</ul>
+</li>
+<li><p>Use SQLmap to identify vulnerabile parameters</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Fill form in browser GUI submit it normally</li>
+<li style="list-style: none"><input type="checkbox"> Go to history tab in burpsuite and find the relevent request</li>
+<li style="list-style: none"><input type="checkbox"> Right click and select the option “copy to file”</li>
+<li style="list-style: none"><input type="checkbox"> Save file as anyname.txt</li>
+<li style="list-style: none"><input type="checkbox"> SQLmap command to run</li>
+<li style="list-style: none"><input type="checkbox"> python <a href="http://sqlmap.py/" target="_blank" rel="noopener">sqlmap.py</a> r ~/Desktop/textsqli.txt proxy= <a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a></li>
+</ul>
+</li>
+<li><p>[ ] Run SQL injection scanner on all requests</p>
+</li>
+<li><p>Bypassing WAF</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Using Null byte before SQL query</li>
+<li style="list-style: none"><input type="checkbox"> Using SQL inline comment sequence</li>
+<li style="list-style: none"><input type="checkbox"> URL encoding</li>
+<li style="list-style: none"><input type="checkbox"> Changing Cases (uppercase/lowercase)</li>
+<li style="list-style: none"><input type="checkbox"> Use SQLMAP tamper scripts</li>
+</ul>
+</li>
+<li><p>Time Delays</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Oracle 	      dbms_pipe.receive_message((&apos;a&apos;),10)</span><br><span class="line"></span><br><span class="line">Microsoft 	  WAITFOR DELAY &apos;0:0:10&apos;</span><br><span class="line"></span><br><span class="line">PostgreSQL 	  SELECT pg_sleep(10)</span><br><span class="line"></span><br><span class="line">MySQL 	      SELECT sleep(10)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Conditional Delays</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Oracle 	      SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN &apos;a&apos;||dbms_pipe.receive_message((&apos;a&apos;),10) ELSE NULL END FROM dual</span><br><span class="line"></span><br><span class="line">Microsoft 	  IF (YOUR-CONDITION-HERE) WAITFOR DELAY &apos;0:0:10&apos;</span><br><span class="line"></span><br><span class="line">PostgreSQL 	  SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN pg_sleep(10) ELSE pg_sleep(0) END</span><br><span class="line"></span><br><span class="line">MySQL 	      SELECT IF(YOUR-CONDITION-HERE,sleep(10),&apos;a&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Cross-Site Scripting Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Try XSS using QuickXSS tool by theinfosecguy</li>
+<li style="list-style: none"><input type="checkbox"> Upload file using<code>&#39;&quot;&gt;&lt;img src=x onerror=alert(document.domain)&gt;.txt</code></li>
+<li style="list-style: none"><input type="checkbox"> If script tags are banned, use<code>&lt;h1&gt;</code> and other HTML tags</li>
+<li style="list-style: none"><input type="checkbox"> If output is reflected back inside the JavaScript as a value of any variable just use alert(1)</li>
+<li style="list-style: none"><input type="checkbox"> if “ are filtered then use this payload<code>/&gt;&lt;img src=d onerror=confirm(/tushar/);&gt;</code></li>
+<li style="list-style: none"><input type="checkbox"> Upload a JavaScript using Image file</li>
+<li style="list-style: none"><input type="checkbox"> Unusual way to execute your JS payload is to change method from POST to GET. It bypasses filters sometimes</li>
+<li>Tag attribute value<ul>
+<li style="list-style: none"><input type="checkbox"> Input landed -<code>&lt;input type=”text” name=”state” value=”INPUT_FROM_ USER”&gt;</code></li>
+<li style="list-style: none"><input type="checkbox"> Payload to be inserted -<code>“ onfocus=”alert(document.cookie)&quot;</code></li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> Syntax Encoding payload<code>“%3cscript%3ealert(document.cookie)%3c/script%3e&quot;</code></li>
+<li>XSS filter evasion<ul>
+<li style="list-style: none"><input type="checkbox"> `&lt; and &gt; can be replace with html entities &lt; and &gt;</li>
+<li style="list-style: none"><input type="checkbox"> You can try an XSS <a href="http://polyglot.Eg" target="_blank" rel="noopener">polyglot.Eg</a>:<code>-javascript:/*-&gt;&lt;/title&gt;&lt;/style&gt;&lt;/textarea&gt;&lt;/script&gt;&lt;/xmp&gt;&lt;svg/onload=&#39;+/&quot;/+/onmouseover=1/+/[*/[]/+alert(1)//&#39;&gt;</code></li>
+</ul>
+</li>
+<li>XSS Firewall Bypass<ul>
+<li style="list-style: none"><input type="checkbox"> Check if the firewall is blocking only lowercase</li>
+<li style="list-style: none"><input type="checkbox"> Try to break firewall regex with the new line(\r\n)</li>
+<li style="list-style: none"><input type="checkbox"> Try Double Encoding</li>
+<li style="list-style: none"><input type="checkbox"> Testing for recursive filters</li>
+<li style="list-style: none"><input type="checkbox"> Injecting anchor tag without whitespaces</li>
+<li style="list-style: none"><input type="checkbox"> Try to bypass whitespaces using Bullet</li>
+<li style="list-style: none"><input type="checkbox"> Try to change request method</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CSRF Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Validation of CSRF token depends on request method</li>
+<li style="list-style: none"><input type="checkbox"> Validation of CSRF token depends on token being present</li>
+<li style="list-style: none"><input type="checkbox"> CSRF token is not tied to the user session</li>
+<li style="list-style: none"><input type="checkbox"> CSRF token is tied to a non-session cookie</li>
+<li style="list-style: none"><input type="checkbox"> Validation of Referer depends on header being present</li>
+</ul>
+</li>
+<li><p><strong>SSO Vulnerabilities</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> If <a href="http://internal.company.com" target="_blank" rel="noopener">internal.company.com</a> Redirects You To SSO e.g. <a href="http://auth.company.com" target="_blank" rel="noopener">auth.company.com</a>, Do FUZZ On <a href="http://Internal.company.com" target="_blank" rel="noopener">Internal.company.com</a></li>
+<li style="list-style: none"><input type="checkbox"> If <a href="http://company.com/internal" target="_blank" rel="noopener">company.com/internal</a> Redirects You To SSO e.g. Google login, Try To Insert public Before internal e.g. <a href="http://company.com/public/internal" target="_blank" rel="noopener">company.com/public/internal</a> To Gain Access Internal</li>
+<li style="list-style: none"><input type="checkbox"> Try To Craft SAML Request With Token And Send It To The Server And Figure Out How Server Interact With This</li>
+<li style="list-style: none"><input type="checkbox"> If There Is AssertionConsumerServiceURL In Token Request Try To Insert Your Domain e.g. <a href="http://me.com" target="_blank" rel="noopener">http://me.com</a> As Value To Steal The Token</li>
+<li style="list-style: none"><input type="checkbox"> If There Is AssertionConsumerServiceURL In Token Request Try To Do FUZZ On Value Of AssertionConsumerServiceURL If It Is Not Similar To Origin</li>
+<li style="list-style: none"><input type="checkbox"> If There Is Any UUID, Try To Change It To UUID Of Victim Attacker e.g. Email Of Internal Employee Or Admin Account etc</li>
+<li style="list-style: none"><input type="checkbox"> Try To Figure Out If The Server Vulnerable To XML Signature Wrapping OR Not?</li>
+<li style="list-style: none"><input type="checkbox"> Try To Figure Out If The Server Checks The Identity Of The Signer OR Not?</li>
+<li style="list-style: none"><input type="checkbox"> Try To Inject XXE Payloads At The Top Of The SAML Response</li>
+<li style="list-style: none"><input type="checkbox"> Try To Inject XSLT Payloads Into The Transforms Element As A Child Node Of The SAML Response</li>
+<li style="list-style: none"><input type="checkbox"> If Victim Can Accept Tokens Issued By The Same Identity Provider That Services Attacker, So You Can Takeover Victim Account</li>
+<li style="list-style: none"><input type="checkbox"> While Testing SSO Try To search In Burp Suite About URLs In Cookie Header e.g. Host=IP; If There Is Try To Change IP To Your IP To Get SSRF</li>
+</ul>
+</li>
+<li><p><strong>XML Injection Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Change the content type to text/xml then insert below code. Check via repeater</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO 8859 1&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE tushar [</span><br><span class="line">&lt;!ELEMENT tushar ANY</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot; &gt;]&gt;&lt;tushar&gt;&amp;xxe;&lt;/</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///etc/hosts&quot; &gt;]&gt;&lt;tushar&gt;&amp;xxe;&lt;/</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///proc/self/cmdline&quot; &gt;]&gt;&lt;tushar&gt;&amp;xxe;&lt;/</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///proc/version&quot; &gt;]&gt;&lt;tushar&gt;&amp;xxe;&lt;/</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Blind XXE with out-of-band interaction</li>
+</ul>
+</li>
+<li><p><strong>Cross-origin resource sharing (CORS)</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Errors parsing Origin headers</li>
+<li style="list-style: none"><input type="checkbox"> Whitelisted null origin value</li>
+</ul>
+</li>
+<li><p><strong>Server-side request forgery (SSRF)</strong></p>
+<ul>
+<li><p>Common injection parameters</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&quot;access=&quot;, </span><br><span class="line">&quot;admin=&quot;, </span><br><span class="line">&quot;dbg=&quot;, </span><br><span class="line">&quot;debug=&quot;, </span><br><span class="line">&quot;edit=&quot;, </span><br><span class="line">&quot;grant=&quot;, </span><br><span class="line">&quot;test=&quot;, </span><br><span class="line">&quot;alter=&quot;, </span><br><span class="line">&quot;clone=&quot;, </span><br><span class="line">&quot;create=&quot;, </span><br><span class="line">&quot;delete=&quot;, </span><br><span class="line">&quot;disable=&quot;, </span><br><span class="line">&quot;enable=&quot;, </span><br><span class="line">&quot;exec=&quot;, </span><br><span class="line">&quot;execute=&quot;, </span><br><span class="line">&quot;load=&quot;, </span><br><span class="line">&quot;make=&quot;, </span><br><span class="line">&quot;modify=&quot;, </span><br><span class="line">&quot;rename=&quot;, </span><br><span class="line">&quot;reset=&quot;, </span><br><span class="line">&quot;shell=&quot;, </span><br><span class="line">&quot;toggle=&quot;, </span><br><span class="line">&quot;adm=&quot;, </span><br><span class="line">&quot;root=&quot;, </span><br><span class="line">&quot;cfg=&quot;,</span><br><span class="line">&quot;dest=&quot;, </span><br><span class="line">&quot;redirect=&quot;, </span><br><span class="line">&quot;uri=&quot;, </span><br><span class="line">&quot;path=&quot;, </span><br><span class="line">&quot;continue=&quot;, </span><br><span class="line">&quot;url=&quot;, </span><br><span class="line">&quot;window=&quot;, </span><br><span class="line">&quot;next=&quot;, </span><br><span class="line">&quot;data=&quot;, </span><br><span class="line">&quot;reference=&quot;, </span><br><span class="line">&quot;site=&quot;, </span><br><span class="line">&quot;html=&quot;, </span><br><span class="line">&quot;val=&quot;, </span><br><span class="line">&quot;validate=&quot;, </span><br><span class="line">&quot;domain=&quot;, </span><br><span class="line">&quot;callback=&quot;, </span><br><span class="line">&quot;return=&quot;, </span><br><span class="line">&quot;page=&quot;, </span><br><span class="line">&quot;feed=&quot;, </span><br><span class="line">&quot;host=&quot;, </span><br><span class="line">&quot;port=&quot;, </span><br><span class="line">&quot;to=&quot;, </span><br><span class="line">&quot;out=&quot;,</span><br><span class="line">&quot;view=&quot;, </span><br><span class="line">&quot;dir=&quot;, </span><br><span class="line">&quot;show=&quot;, </span><br><span class="line">&quot;navigation=&quot;, </span><br><span class="line">&quot;open=&quot;,</span><br><span class="line">&quot;file=&quot;,</span><br><span class="line">&quot;document=&quot;,</span><br><span class="line">&quot;folder=&quot;,</span><br><span class="line">&quot;pg=&quot;,</span><br><span class="line">&quot;php_path=&quot;,</span><br><span class="line">&quot;style=&quot;,</span><br><span class="line">&quot;doc=&quot;,</span><br><span class="line">&quot;img=&quot;,</span><br><span class="line">&quot;filename=&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[ ] Try basic localhost payloads</p>
+</li>
+<li><p>Bypassing filters</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Bypass using HTTPS</li>
+<li style="list-style: none"><input type="checkbox"> Bypass with [::]</li>
+<li style="list-style: none"><input type="checkbox"> Bypass with a domain redirection</li>
+<li style="list-style: none"><input type="checkbox"> Bypass using a decimal IP location</li>
+<li style="list-style: none"><input type="checkbox"> Bypass using IPv6/IPv4 Address Embedding</li>
+<li style="list-style: none"><input type="checkbox"> Bypass using malformed urls</li>
+<li style="list-style: none"><input type="checkbox"> Bypass using rare address(short-hand IP addresses by dropping the zeros)</li>
+<li style="list-style: none"><input type="checkbox"> Bypass using enclosed alphanumerics</li>
+</ul>
+</li>
+<li><p>Cloud Instances</p>
+<ul>
+<li><p>AWS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://instance-data&gt;</span><br><span class="line">&lt;http://169.254.169.254&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/user-data&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/user-data/iam/security-credentials/&gt;[ROLE NAME]</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/iam/security-credentials/&gt;[ROLE NAME]</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/iam/security-credentials/PhotonInstance&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/ami-id&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/reservation-id&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/hostname&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/public-keys/&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/iam/security-credentials/dummy&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access&gt;</span><br><span class="line">&lt;http://169.254.169.254/latest/dynamic/instance-identity/document&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Google Cloud</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://169.254.169.254/computeMetadata/v1/&gt;</span><br><span class="line">&lt;http://metadata.google.internal/computeMetadata/v1/&gt;</span><br><span class="line">&lt;http://metadata/computeMetadata/v1/&gt;</span><br><span class="line">&lt;http://metadata.google.internal/computeMetadata/v1/instance/hostname&gt;</span><br><span class="line">&lt;http://metadata.google.internal/computeMetadata/v1/instance/id&gt;</span><br><span class="line">&lt;http://metadata.google.internal/computeMetadata/v1/project/project-id&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Digital Ocean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;http://169.254.169.254/metadata/v1/id&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/v1.json&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/v1/&gt; </span><br><span class="line">&lt;http://169.254.169.254/metadata/v1/id&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/v1/user-data&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/v1/hostname&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/v1/region&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/v1/interfaces/public/0/ipv6/address&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Azure</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://169.254.169.254/metadata/v1/maintenance&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/instance?api-version=2017-04-02&gt;</span><br><span class="line">&lt;http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&amp;format=text&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>[ ] Bypassing via open redirection</p>
+</li>
+</ul>
+</li>
+<li><p><strong>File Upload Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> upload the malicious file to the archive upload functionality and observe how the application responds</li>
+<li style="list-style: none"><input type="checkbox"> upload a file and change its path to overwrite an existing system file</li>
+<li style="list-style: none"><input type="checkbox"> Large File Denial of Service</li>
+<li style="list-style: none"><input type="checkbox"> Metadata Leakage</li>
+<li style="list-style: none"><input type="checkbox"> ImageMagick Library Attacks</li>
+<li style="list-style: none"><input type="checkbox"> Pixel Flood Attack</li>
+<li>Bypasses<ul>
+<li style="list-style: none"><input type="checkbox"> Null Byte (%00) Bypass</li>
+<li style="list-style: none"><input type="checkbox"> Content-Type Bypass</li>
+<li style="list-style: none"><input type="checkbox"> Magic Byte Bypass</li>
+<li style="list-style: none"><input type="checkbox"> Client-Side Validation Bypass</li>
+<li style="list-style: none"><input type="checkbox"> Blacklisted Extension Bypass</li>
+<li style="list-style: none"><input type="checkbox"> Homographic Character Bypass</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CAPTCHA Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Missing Captcha Field Integrity Checks</li>
+<li style="list-style: none"><input type="checkbox"> HTTP Verb Manipulation</li>
+<li style="list-style: none"><input type="checkbox"> Content Type Conversion</li>
+<li style="list-style: none"><input type="checkbox"> Reusuable Captcha</li>
+<li style="list-style: none"><input type="checkbox"> Check if captcha is retrievable with the absolute path such as <a href="http://www.chintan.com/internal/captcha/images/24.png" target="_blank" rel="noopener">www.tushar.com/internal/captcha/images/24.png</a></li>
+<li style="list-style: none"><input type="checkbox"> Check for the server side validation for CAPTCHA.Remove captcha block from GUI using firebug addon and submit request to the server</li>
+<li style="list-style: none"><input type="checkbox"> Check if image recognition can be done with OCR tool?</li>
+</ul>
+</li>
+<li><p><strong>JWT Token Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Brute-forcing secret keys</li>
+<li style="list-style: none"><input type="checkbox"> Signing a new token with the “none” algorithm</li>
+<li style="list-style: none"><input type="checkbox"> Changing the signing algorithm of the token (for fuzzing purposes)</li>
+<li style="list-style: none"><input type="checkbox"> Signing the asymmetrically-signed token to its symmetric algorithm match (when you have the original public key)</li>
+</ul>
+</li>
+<li><p><strong>Websockets Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Intercepting and modifying WebSocket messages</li>
+<li style="list-style: none"><input type="checkbox"> Websockets MITM attempts</li>
+<li style="list-style: none"><input type="checkbox"> Testing secret header websocket</li>
+<li style="list-style: none"><input type="checkbox"> Content stealing in websockets</li>
+<li style="list-style: none"><input type="checkbox"> Token authentication testing in websockets</li>
+</ul>
+</li>
+<li><p><strong>GraphQL Vulnerabilities Testing</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Inconsistent Authorization Checks</li>
+<li style="list-style: none"><input type="checkbox"> Missing Validation of Custom Scalars</li>
+<li style="list-style: none"><input type="checkbox"> Failure to Appropriately Rate-limit</li>
+<li style="list-style: none"><input type="checkbox"> Introspection Query Enabled/Disabled</li>
+</ul>
+</li>
+<li><p><strong>WordPress Common Vulnerabilities</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> XSPA in wordpress</li>
+<li style="list-style: none"><input type="checkbox"> Bruteforce in wp-login.php</li>
+<li style="list-style: none"><input type="checkbox"> Information disclosure wordpress username</li>
+<li style="list-style: none"><input type="checkbox"> Backup file wp-config exposed</li>
+<li style="list-style: none"><input type="checkbox"> Log files exposed</li>
+<li style="list-style: none"><input type="checkbox"> Denial of Service via load-styles.php</li>
+<li style="list-style: none"><input type="checkbox"> Denial of Service via load-scripts.php</li>
+<li style="list-style: none"><input type="checkbox"> DDOS using xmlrpc.php</li>
+</ul>
+</li>
+<li><p><strong>Denial of Service</strong></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Cookie bomb</li>
+<li style="list-style: none"><input type="checkbox"> Pixel flood, using image with a huge pixels</li>
+<li style="list-style: none"><input type="checkbox"> Frame flood, using GIF with a huge frame</li>
+<li style="list-style: none"><input type="checkbox"> ReDoS (Regex DoS)</li>
+<li style="list-style: none"><input type="checkbox"> CPDoS (Cache Poisoned Denial of Service)</li>
+</ul>
+</li>
+<li><p><strong>Other Test Cases (All Categories)</strong></p>
+<ul>
+<li>Testing for Role authorization<ul>
+<li style="list-style: none"><input type="checkbox"> Check if normal user can access the resources of high privileged users?</li>
+<li style="list-style: none"><input type="checkbox"> Forced browsing</li>
+<li style="list-style: none"><input type="checkbox"> Insecure direct object reference</li>
+<li style="list-style: none"><input type="checkbox"> Parameter tampering to switch user account to high privileged user</li>
+</ul>
+</li>
+<li>Check for security headers and at least<ul>
+<li style="list-style: none"><input type="checkbox"> X Frame Options</li>
+<li style="list-style: none"><input type="checkbox"> X-XSS header</li>
+<li style="list-style: none"><input type="checkbox"> HSTS header</li>
+<li style="list-style: none"><input type="checkbox"> CSP header</li>
+<li style="list-style: none"><input type="checkbox"> Referrer Policy</li>
+<li style="list-style: none"><input type="checkbox"> Cache Control</li>
+<li style="list-style: none"><input type="checkbox"> Public key pins</li>
+</ul>
+</li>
+<li>Blind OS command injection<ul>
+<li style="list-style: none"><input type="checkbox"> using time delays</li>
+<li style="list-style: none"><input type="checkbox"> by redirecting output</li>
+<li style="list-style: none"><input type="checkbox"> with out-of-band interaction</li>
+<li style="list-style: none"><input type="checkbox"> with out-of-band data exfiltration</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> Command injection on CSV export (Upload/Download)</li>
+<li style="list-style: none"><input type="checkbox"> CSV Excel Macro Injection</li>
+<li style="list-style: none"><input type="checkbox"> If you find phpinfo.php file, check for the configuration leakage and try to exploit any network vulnerability.</li>
+<li style="list-style: none"><input type="checkbox"> Parameter Pollution Social Media Sharing Buttons</li>
+<li>Broken Cryptography<ul>
+<li style="list-style: none"><input type="checkbox"> Cryptography Implementation Flaw</li>
+<li style="list-style: none"><input type="checkbox"> Encrypted Information Compromised</li>
+<li style="list-style: none"><input type="checkbox"> Weak Ciphers Used for Encryption</li>
+</ul>
+</li>
+<li>Web Services Testing<ul>
+<li style="list-style: none"><input type="checkbox"> Test for directory traversal</li>
+<li style="list-style: none"><input type="checkbox"> Web services documentation disclosure Enumeration of services, data types, input types boundaries and limits</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Sys71m</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://www.sys71m.top/2022/10/30/Web-Application-Penetration-Testing-Checklist/">https://www.sys71m.top/2022/10/30/Web-Application-Penetration-Testing-Checklist/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/渗透/">渗透</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2022/08/20/CodeQL如何分析闭源jar包/"><span>CodeQL如何分析闭源jar包</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://www.sys71m.top/2022/10/30/Web-Application-Penetration-Testing-Checklist/';
+  this.page.identifier = '2022/10/30/Web-Application-Penetration-Testing-Checklist/';
+  this.page.title = 'Web Application Penetration Testing Checklist';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'sys71m' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://sys71m.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/ttonys/MarkDownPic/master/test33.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2022 By Sys71m</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
