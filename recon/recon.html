@@ -1,0 +1,655 @@
+<html lang="zh-CN">
+
+
+<head>
+    <meta content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Bug Bounty Helper</title>
+    <meta name="author" content="Faisal Ahmed" />
+    <meta name="referrer" content="never">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="SHORTCUT ICON" href="img/61.gif">
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            background-image: url(https://assets.faisalahmed.me/bg1.png);
+            color: #FFF;
+            font-size: 14pt;
+            font-family: "Merienda One";
+            font-weight: bold;
+            padding: 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+        .row {
+            padding: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        canvas {
+            height: 100vh;
+            z-index: -10;
+            position: fixed;
+            top: 0px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #DA4932;
+        }
+
+        hr {
+            border: 2;
+            width: 50%;
+        }
+
+        input {
+            overflow: hidden;
+            color: #FFF;
+            background: transparent;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            height: 32px;
+            padding: 4px 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function check_submit(e) {
+            if (e && e.keyCode == 13 && e.target.type != 'textarea') {
+                e.preventDefault();
+                e.defaultPrevented = true;
+
+                if ($('#tool-form').valid() == true) {
+                    if ($('#security-check').is(':visible') == true) {
+                        document.getElementById('tool-form').submit();
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-100953906-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <div id="particles-js">
+        <div
+            style="font-family: Merienda One;text-align: center;font-size: 25pt;text-shadow: 0 0 6px #FF0000, 0 0 5px #FF0000, 0 0 5px #FF0000;color: #FFF">
+            Bug Bounty Helper<br></div><br />
+        <div onkeypress="check_submit(event)">
+
+            <form novalidate="novalidate" onsubmit="return false" id="tool-form" role="form" method="GET" action="/"
+                target="response-frame">
+                <input name="p" value="tool" type="hidden">
+                <input name="t" value="10" type="hidden">
+                <input name="act" value="exec" type="hidden">
+                <script>
+                    document.getElementById('tool-form').setAttribute('onsubmit', 'return false');
+                    check_submit = function (event) { };
+                </script>
+                <script>
+                    function batch_open_recon(isShow) {
+                        site = document.getElementById('target').value;
+                        urlList = ""
+                        for (var i = 1; i < 100; i++) {
+                            res = google_it(i, site, true)
+                            if (res.length !== 0) {
+                                urlList = urlList + res + "\n"
+                            }
+
+                        }
+                        if (isShow) {
+                            batchOpen = document.getElementById('batch_open1');
+                            batchOpen.removeAttribute('hidden');
+                            batchOpen.value = urlList
+
+                        } else {
+                            batchOpen.setAttribute('hidden', 'hidden');
+                        }
+                    }
+                    function google_it(type, site, isCall) {
+                        if ($('#tool-form').valid() == false) {
+                            return;
+                        }
+                        if (site === undefined) {
+                            site = document.getElementById('target').value;
+                        }
+
+                        if (site.indexOf('://') > 0) {
+                            site = site.substr(site.indexOf('://') + 3);
+                        }
+                        url = 'https://www.google.com/search?q=';
+                        url += 'site:' + site;
+                        switch (type) {
+                            case 1:
+                                url += '+intitle:index.of';
+                                break;
+                            case 2:
+                                url += '+ext:xml+|+ext:conf+|+ext:cnf+|+ext:reg+|+ext:inf+|+ext:rdp+|+ext:cfg+|+ext:txt+|+ext:ora+|+ext:ini';
+                                break;
+                            case 3:
+                                url += '+ext:sql+|+ext:dbf+|+ext:mdb';
+                                break;
+                            case 4:
+                                url += '+ext:log';
+                                break;
+                            case 5:
+                                url += '+ext:bkf+|+ext:bkp+|+ext:bak+|+ext:old+|+ext:backup';
+                                break;
+                            case 6:
+                                url += '+inurl:login';
+                                break;
+                            case 7:
+                                url += '+intext:"sql+syntax+near"+|+intext:"syntax+error+has+occurred"+|+intext:"incorrect+syntax+near"+|+intext:"unexpected+end+of+SQL+command"+|+intext:"Warning:+mysql_connect()"+|+intext:"Warning:+mysql_query()"+|+intext:"Warning:+pg_connect()"';
+                                break;
+                            case 8:
+                                url += '+ext:doc+|+ext:docx+|+ext:odt+|+ext:pdf+|+ext:rtf+|+ext:sxw+|+ext:psw+|+ext:ppt+|+ext:pptx+|+ext:pps+|+ext:csv';
+                                break;
+                            case 9:
+                                url += '+ext:php+intitle:phpinfo+"published+by+the+PHP+Group"';
+                                break;
+                            case 10:
+                                url += '+inurl:wp-+|+inurl:wp-content+|+inurl:plugins+|+inurl:uploads+|+inurl:themes+|+inurl:download';
+                                break;
+                            case 11:
+                                url += '+inurl:shell+|+inurl:backdoor+|+inurl:wso+|+inurl:cmd+|+shadow+|+passwd+|+boot.ini+|+inurl:backdoor';
+                                break;
+                            case 12:
+                                url += '+inurl:readme+|+inurl:license+|+inurl:install+|+inurl:setup+|+inurl:config';
+                                break;
+                            case 13:
+                                url += '+inurl:redir+|+inurl:url+|+inurl:redirect+|+inurl:return+|+inurl:src=http+|+inurl:r=http';
+                                break;
+                            case 14:
+                                url += '+ext:action+|+ext:struts+|+ext:do';
+                                break;
+                            case 15:
+                                url = 'https://www.google.com/search?q=site:pastebin.com+' + site;
+                                break;
+                            case 16:
+                                url = 'https://www.google.com/search?q=site:linkedin.com+employees+' + site;
+                                break;
+                            case 17:
+                                url += '+inurl:"/phpinfo.php"+|+inurl:".htaccess"+|+inurl:"/.git"+' + site + ' -github';
+                                break;
+                            case 18:
+                                url = 'https://www.google.com/search?q=site:*.' + site;
+                                break;
+                            case 19:
+                                url = 'https://www.google.com/search?q=site:*.*.' + site;
+                                break;
+                            case 20:
+                                url += '+inurl:wp-content+|+inurl:wp-includes';
+                                break;
+                            case 21:
+                                url = 'https://github.com/search?q="*.' + site + '"&type=host';
+                                break;
+                            case 22:
+                                url = 'http://' + site + '/crossdomain.xml';
+                                break;
+                            case 23:
+                                url = 'http://threatcrowd.org/domain.php?domain=' + site;
+                                break;
+                            case 24:
+                                url = 'https://www.google.com/search?q=+inurl:' + site + '+ext:swf';
+                                break;
+                            case 25:
+                                url = 'https://yandex.com/search/?text=site:' + site + '%20mime:swf';
+                                break;
+                            case 26:
+                                url = 'https://web.archive.org/cdx/search?url=' + site + '/&matchType=domain&collapse=urlkey&output=text&fl=original&filter=urlkey:.*swf&limit=100000&_=1507209148310';
+                                break;
+                            case 27:
+                                url = 'https://web.archive.org/cdx/search?url=' + site + '/&matchType=domain&collapse=urlkey&output=text&fl=original&filter=mimetype:application/x-shockwave-flash&limit=100000&_=1507209148310';
+                                break;
+                            case 28:
+                                url = 'https://web.archive.org/web/*/(.' + site + ')';
+                            case 29:
+                                url = 'https://web.archive.org/web/*/' + site + '/*';
+                                break;
+                            case 30:
+                                url = 'https://crt.sh/?q=%25.' + site;
+                                break;
+                            case 31:
+                                url = 'https://www.openbugbounty.org/search/?search=' + site + '&type=host';
+                                break;
+                            case 32:
+                                url = 'https://www.reddit.com/search/?q=' + site + '&source=recent';
+                                break;
+                            case 33:
+                                url = 'http://wwwb-dedup.us.archive.org:8083/cdx/search?url=' + site + '/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=';
+                                break;
+                            case 34:
+                                url = 'https://censys.io/ipv4?q=' + site;
+                                break;
+                            case 35:
+                                url = 'https://censys.io/domain?q=' + site;
+                                break;
+                            case 36:
+                                url = 'https://censys.io/certificates?q=' + site;
+                                break;
+                            case 37:
+                                url = 'https://www.shodan.io/search?query=' + site;
+                                break;
+                            default:
+                                url = "";
+                                break
+                        }
+                        if (url != undefined && isCall !== true) {
+                            window.open(url);
+                        }
+
+                        if (url != undefined && isCall === true) {
+                            return url;
+
+                        }
+
+                    }
+                </script>
+
+
+
+                <!-- start 自定义google敏感信息收集 -->
+                <script>
+                    function batch_open_github(isShow) {
+                        site = document.getElementById('target2').value;
+                        ext = document.getElementById('ext2').value;
+                        urlList = ""
+                        for (var i = 1; i < 100; i++) {
+                            res = github_it(i, site, ext, true)
+                            if (res.length !== 0) {
+                                urlList = urlList + res + "\n"
+                            }
+
+                        }
+                        if (isShow) {
+                            batchOpen = document.getElementById('batch_open2');
+                            batchOpen.removeAttribute('hidden');
+                            batchOpen.value = urlList
+
+                        } else {
+                            batchOpen.setAttribute('hidden', 'hidden');
+                        }
+                    }
+                    function github_it(type, site, ext, isCall) {
+                        if ($('#tool-form').valid() == false) {
+                            return;
+                        }
+                        if (site === undefined) {
+                            site = document.getElementById('target2').value;
+                        }
+                        if (ext === undefined) {
+                            ext = document.getElementById('ext2').value;
+                        }
+
+
+                        // if (site.indexOf('://') > 0) {
+                        //     site = site.substr(site.indexOf('://') + 3);
+                        // }
+                        // url = 'https://www.google.com/search?q=';
+                        // url += 'site:' + site;
+
+                        switch (type) {
+                            case 1:
+                                url = 'https://github.com/search?q="' + site + '"+filename:credentials.xml+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 2:
+                                url = 'https://github.com/search?q="' + site + '"+filename:settings.py+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 3:
+                                url = 'https://github.com/search?q="' + site + '"+filename:secret_token.rb+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 4:
+                                url = 'https://github.com/search?q="' + site + '"+filename:.sqlite+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 5:
+                                url = 'https://github.com/search?q="' + site + '"+filename:id_dsa+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 6:
+                                url = 'https://github.com/search?q="' + site + '"+filename:id_rsa+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 7:
+                                url = 'https://github.com/search?q="' + site + '"+filename:credentials+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 8:
+                                url = 'https://github.com/search?q="' + site + '"+filename:wp-config.php+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 9:
+                                url = 'https://github.com/search?q="' + site + '"+filename:.env+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 10:
+                                url = 'https://github.com/search?q="' + site + '"+filename:shadow+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 11:
+                                url = 'https://github.com/search?q="' + site + '"+filename:configuration.php+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 12:
+                                url = 'https://github.com/search?q="' + site + '"+filename:config.inc.php+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 13:
+                                url = 'https://github.com/search?q="' + site + '"+filename:config.php+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 14:
+                                url = 'https://github.com/search?q="' + site + '"+filename:LocalSettings.php+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 15:
+                                url = 'https://github.com/search?q="' + site + '"+filename:secrets.yml+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 16:
+                                url = 'https://github.com/search?q="' + site + '"+filename:database+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 17:
+                                url = 'https://github.com/search?q="' + site + '"+filename:id_ed25519+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 18:
+                                url = 'https://github.com/search?q="' + site + '"+filename:.pem+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 19:
+                                url = 'https://github.com/search?q="' + site + '"+filename:.crt+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 20:
+                                url = 'https://github.com/search?q="' + site + '"+filename:pgpass+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 21:
+                                url = 'https://github.com/search?q="' + site + '"+filename:idea14.key+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 22:
+                                url = 'https://github.com/search?q="' + site + '"+filename:.bash_profile+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 23:
+                                url = 'https://github.com/search?q="' + site + '"+filename:.sh_history+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 24:
+                                url = 'https://github.com/search?q="' + site + '"+filename:hub+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+
+                            // 预留1-40
+                            case 41:
+                                url = 'https://github.com/search?q="' + site + '"+api_key+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 42:
+                                url = 'https://github.com/search?q="' + site + '"+client_secret+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 43:
+                                url = 'https://github.com/search?q="' + site + '"+api_token+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 44:
+                                url = 'https://github.com/search?q="' + site + '"+client_id+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 45:
+                                url = 'https://github.com/search?q="' + site + '"+shodan_api_key+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 46:
+                                url = 'https://github.com/search?q="' + site + '"+password+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 47:
+                                url = 'https://github.com/search?q="' + site + '"+user_password+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 48:
+                                url = 'https://github.com/search?q="' + site + '"+client_secret+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 49:
+                                url = 'https://github.com/search?q="' + site + '"+secret+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 50:
+                                url = 'https://github.com/search?q="' + site + '"+user auth+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 51:
+                                url = 'https://github.com/search?q="' + site + '"+token+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 52:
+                                url = 'https://github.com/search?q="' + site + '"+passcode+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 53:
+                                url = 'https://github.com/search?q="' + site + '"+password hash+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 54:
+                                url = 'https://github.com/search?q="' + site + '"+user_pass+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 55:
+                                url = 'https://github.com/search?q="' + site + '"+authentication+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 56:
+                                url = 'https://github.com/search?q="' + site + '"+authorization_bearer+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 57:
+                                url = 'https://github.com/search?q="' + site + '"+oauth+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 58:
+                                url = 'https://github.com/search?q="' + site + '"+auth+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            case 59:
+                                url = 'https://github.com/search?q="' + site + '"+OTP+' + ext + '&o=desc&s=indexed&type=Code';
+                                break;
+                            default:
+                                url = "";
+                                break;
+                        }
+                        if (url != undefined && isCall !== true) {
+                            window.open(url);
+                        }
+
+                        if (url != undefined && isCall === true) {
+                            return url;
+
+                        }
+                    }
+                </script>
+                <!-- end 自定义google敏感信息收集 -->
+                <div style="text-align: center;"><b>Target Domain:</b>
+
+                    <input id="target" name="target" placeholder="site.com" autofocus="" type="text">
+                    <button onclick="batch_open_recon(true)">显示</button>
+                    <button onclick="batch_open_recon(false)">隐藏</button>
+                    <br />
+                    <textarea id="batch_open1" placeholder="https://www.example.com" hidden
+                        style="width:1000px;height:200px;"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                        <div style="text-align: center;">
+                            <div style="display: inline-block; text-align: left;">
+                                &#128269; <a href="#" onclick="google_it(1)">Directory listing vulnerabilities</a><br />
+                                &#128269; <a href="#" onclick="google_it(2)">Exposed Configuration files</a><br />
+                                &#128269; <a href="#" onclick="google_it(3)">Exposed Database files</a><br />
+                                &#128269; <a href="#" onclick="google_it(10)">Find WordPress</a><br />
+                                &#128269; <a href="#" onclick="google_it(4)">Exposed log files</a><br />
+                                &#128269; <a href="#" onclick="google_it(5)">Backup and old files</a><br />
+                                &#128269; <a href="#" onclick="google_it(6)">Login pages</a><br />
+                                &#128269; <a href="#" onclick="google_it(7)">SQL errors</a><br />
+                                &#128269; <a href="#" onclick="google_it(8)">Publicly exposed documents</a><br />
+                                &#128269; <a href="#" onclick="google_it(9)">phpinfo()</a><br />
+                                &#128269; <a href="#" onclick="google_it(11)">Finding Backdoors</a><br />
+                                &#128269; <a href="#" onclick="google_it(12)">Install / Setup files</a><br />
+                                &#128269; <a href="#" onclick="google_it(13)">Open Redirects</a><br />
+                                &#128269; <a href="#" onclick="google_it(14)">Apache STRUTS RCE</a><br />
+                                &#128269; <a href="#" onclick="google_it(15)">Find Pastebin entries</a><br />
+                                &#128269; <a href="#" onclick="google_it(16)">Employees on LINKEDIN</a><br />
+                                &#128269; <a href="#" onclick="google_it(17)">.htaccess sensitive files</a><br />
+                                &#128269; <a href="#" onclick="google_it(18)">Find Subdomains</a><br />
+                                &#128269; <a href="#" onclick="google_it(19)">Find Sub-Subdomains</a><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="text-align: center;">
+                            <div style="display: inline-block; text-align: left;">
+                                &#128269; <a href="#" onclick="google_it(20)">Find WordPress #2</a><br />
+                                &#128269; <a href="#" onclick="google_it(33)">Find WordPress [Wayback Machine]</a><br />
+                                &#128269; <a href="#" onclick="google_it(21)">Search in GITHUB</a><br />
+                                &#128269; <a href="#" onclick="google_it(31)">Search in OpenBugBounty</a><br />
+                                &#128269; <a href="#" onclick="google_it(32)">Search in Reddit</a><br />
+                                &#128269; <a href="#" onclick="google_it(22)">Test CrossDomain</a><br />
+                                &#128269; <a href="#" onclick="google_it(23)">Check in ThreatCrowd</a><br />
+                                &#128269; <a href="#" onclick="google_it(24)">Find .SWF file (Google)</a><br />
+                                &#128269; <a href="#" onclick="google_it(25)">Find .SWF file (Yandex)</a><br />
+                                &#128269; <a href="#" onclick="google_it(26)">Search SWF in WayBack Machine</a><br />
+                                &#128269; <a href="#" onclick="google_it(27)">Search in WayBack Machine #2</a><br />
+                                &#128269; <a href="#" onclick="google_it(28)">Search in WayBack Machine #3</a><br />
+                                &#128269; <a href="#" onclick="google_it(29)">Search in WayBack Machine
+                                    [List/All]</a><br />
+                                &#128269; <a href="#" onclick="google_it(30)">Check in crt.sh</a><br />
+                                &#128269; Check in CENSYS <u><a href="#" onclick="google_it(34)">[IP4]</a></u> | <u><a
+                                        href="#" onclick="google_it(35)">[DOMAINS]</a></u> | <u><a href="#"
+                                        onclick="google_it(36)">[CERTS]</a></u><br />
+                                &#128269; <a href="#" onclick="google_it(37)">Search in SHODAN</a><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    </form>
+    <div style="clear: both;"></div>
+    <hr>
+    <div
+        style="font-family: Merienda One;text-align: center;font-size: 25pt;text-shadow: 0 0 6px #FF0000, 0 0 5px #FF0000, 0 0 5px #FF0000;color: #FFF">
+        My Recon Tips<br></div><br>
+    <div style="text-align: center;"><b>Github Recon:</b>
+        <input id="target2" name="target2" placeholder="apple" autofocus="" type="text">
+        <input id="ext2" name="ext2" placeholder="language:Java/key" autofocus="" type="text">
+        <button onclick="batch_open_github(true)">显示</button>
+        <button onclick="batch_open_github(false)">隐藏</button>
+        <br />
+        <textarea id="batch_open2" placeholder="https://www.example.com" hidden
+            style="width:1000px;height:200px;"></textarea>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div style="text-align: center;">
+                <div style="display: inline-block; text-align: left;">
+                    &#128269; <a href="#" onclick="github_it(1)">[Github]credentials.xml</a><br />
+                    &#128269; <a href="#" onclick="github_it(2)">[Github]settings.py</a><br />
+                    &#128269; <a href="#" onclick="github_it(3)">[Github]secret_token.rb</a><br />
+                    &#128269; <a href="#" onclick="github_it(4)">[Github].sqlite</a><br />
+                    &#128269; <a href="#" onclick="github_it(5)">[Github]id_dsa</a><br />
+                    &#128269; <a href="#" onclick="github_it(6)">[Github]id_rsa</a><br />
+                    &#128269; <a href="#" onclick="github_it(7)">[Github]credentials</a><br />
+                    &#128269; <a href="#" onclick="github_it(8)">[Github]wp-config.php</a><br />
+                    &#128269; <a href="#" onclick="github_it(9)">[Github].env</a><br />
+                    &#128269; <a href="#" onclick="github_it(10)">[Github]shadow</a><br />
+                    &#128269; <a href="#" onclick="github_it(11)">[Github]configuration.php</a><br />
+                    &#128269; <a href="#" onclick="github_it(12)">[Github]config.inc.php</a><br />
+                    &#128269; <a href="#" onclick="github_it(13)">[Github]config.php</a><br />
+                    &#128269; <a href="#" onclick="github_it(14)">[Github]LocalSettings.php</a><br />
+                    &#128269; <a href="#" onclick="github_it(15)">[Github]secrets.yml</a><br />
+                    &#128269; <a href="#" onclick="github_it(16)">[Github]database</a><br />
+                    &#128269; <a href="#" onclick="github_it(17)">[Github]id_ed25519</a><br />
+                    &#128269; <a href="#" onclick="github_it(18)">[Github].pem</a><br />
+                    &#128269; <a href="#" onclick="github_it(19)">[Github].crt</a><br />
+                    &#128269; <a href="#" onclick="github_it(20)">[Github]pgpass</a><br />
+                    &#128269; <a href="#" onclick="github_it(21)">[Github]idea14.key</a><br />
+                    &#128269; <a href="#" onclick="github_it(22)">[Github].bash_profile</a><br />
+                    &#128269; <a href="#" onclick="github_it(23)">[Github].sh_history</a><br />
+                    &#128269; <a href="#" onclick="github_it(24)">[Github]hub</a><br />
+
+                    <!-- 预留github文件搜索1-40 -->
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div style="text-align: center;">
+                <div style="display: inline-block; text-align: left;">
+                    &#128269; <a href="#" onclick="github_it(41)">[Github]api_key</a><br />
+                    &#128269; <a href="#" onclick="github_it(42)">[Github]client_secret</a><br />
+                    &#128269; <a href="#" onclick="github_it(43)">[Github]api_token</a><br />
+                    &#128269; <a href="#" onclick="github_it(44)">[Github]client_id</a><br />
+                    &#128269; <a href="#" onclick="github_it(45)">[Github]shodan_api_key</a><br />
+                    &#128269; <a href="#" onclick="github_it(46)">[Github]password</a><br />
+                    &#128269; <a href="#" onclick="github_it(47)">[Github]user_password</a><br />
+                    &#128269; <a href="#" onclick="github_it(48)">[Github]client_secret</a><br />
+                    &#128269; <a href="#" onclick="github_it(49)">[Github]secret</a><br />
+                    &#128269; <a href="#" onclick="github_it(50)">[Github]user auth</a><br />
+                    &#128269; <a href="#" onclick="github_it(51)">[Github]token</a><br />
+                    &#128269; <a href="#" onclick="github_it(52)">[Github]passcode</a><br />
+                    &#128269; <a href="#" onclick="github_it(53)">[Github]password hash</a><br />
+                    &#128269; <a href="#" onclick="github_it(54)">[Github]user_pass</a><br />
+                    &#128269; <a href="#" onclick="github_it(55)">[Github]authentication</a><br />
+                    &#128269; <a href="#" onclick="github_it(56)">[Github]authorization_bearer</a><br />
+                    &#128269; <a href="#" onclick="github_it(57)">[Github]oauth</a><br />
+                    &#128269; <a href="#" onclick="github_it(58)">[Github]auth</a><br />
+                    &#128269; <a href="#" onclick="github_it(59)">[Github]OTP</a><br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div
+        style="font-family: Merienda One;text-align: center;font-size: 25pt;text-shadow: 0 0 6px #FF0000, 0 0 5px #FF0000, 0 0 5px #FF0000;color: #FFF">
+        Helper Websites<br></div><br>
+
+    <div
+        style="text-align: center;font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;">
+        <div style="display: inline-block; text-align: left;">
+            🔵 <a href="https://requestbin.net/" rel="noreferrer noopener" target="_blank">DNSBin - The request.bin of
+                DNS!</a><br />
+            🔵 <a href="https://hackertarget.com/wordpress-security-scan/" rel="noreferrer noopener"
+                target="_blank">WordPress Scan #1</a><br />
+            🔵 <a href="https://wprecon.com/" rel="noreferrer noopener" target="_blank">WordPress Scan #2</a><br />
+            🔵 <a href="https://developers.facebook.com/tools/ct/" rel="noreferrer noopener" target="_blank">Facebook
+                Certificate Transparency Monitoring [Recon]</a><br />
+            🔵 <a href="https://www.smartconversion.com/unit_conversion/IP_Address_Converter.aspx"
+                rel="noreferrer noopener" target="_blank">IP converter</a><br />
+            🔵 <a href="https://whoisrequest.com/history/" rel="noreferrer noopener" target="_blank">Domain History
+                Checker</a><br />
+            🔵 <a href="https://publicwww.com/" rel="noreferrer noopener" target="_blank">Source code search
+                engine</a><br />
+        </div>
+    </div>
+
+    <script src="js/jquery1.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
+
+    <script src="js/bg.js"></script>
+
+    <br />
+    <!-- <div style="font-family: Merienda One;text-align: center;padding: 7px 0;font-size:20px;"><img
+            src="https://assets.faisalahmed.me/faisalname.png"></div>
+    </div> -->
+</body>
+
+</html>
